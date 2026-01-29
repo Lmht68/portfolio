@@ -3,6 +3,25 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --background-image-img-1: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/bg-1.jpg');
-  --background-image-img-2: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/bg-2.jpg')
+  --background-image-img-1: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/bg-1.jpg');
+  --background-image-img-2: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/bg-2.jpg');
+}
+
+@layer base {
+  .dark {
+    --background-image-img-1: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/bg-1.jpg');
+    --background-image-img-2: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/bg-2.jpg');
+  }
+}
+
+@utility content-block-bg {
+  @apply bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100
+}
+
+@utility content-block-border {
+  @apply border-2 border-violet-600 dark:border-orange-300 rounded-md
+}
+
+@utility text-title {
+  @apply text-violet-600 dark:text-orange-300
 }

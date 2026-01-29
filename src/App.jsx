@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Intro from './components/Intro';
+import Portfolio from './components/Portfolio';
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -66,7 +67,7 @@ function App() {
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
-      <Parallax pages={4}>
+      <Parallax pages={2}>
         <ParallaxLayer
           offset={0}
           speed={-0.2}
@@ -83,12 +84,19 @@ function App() {
         </ParallaxLayer>
 
         <ParallaxLayer
+          offset={0.70}
+          speed={0.05}
+        >
+          <Portfolio />
+        </ParallaxLayer>
+
+        {/* <ParallaxLayer
           offset={2}
           speed={-0.2}
           factor={2}
           className="bg-img-2"
           style={{ backgroundSize: 'cover' }}
-        />
+        /> */}
       </Parallax>
     </>
   )
