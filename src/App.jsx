@@ -5,12 +5,28 @@ import Portfolio from './components/Portfolio';
 import Timeline from './components/Timeline';
 
 function App() {
+  const handleThemeSwitch = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  const getResponsiveConfig = (width) => {
+    if (width < 640) { // Mobile
+      return { intro: 0.17, portfolio: 1.0, timeline: 3.5, totalPages: 5 };
+    } else if (width < 1024) { // Tablet
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, totalPages: 4 };
+    } else { // Desktop
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, totalPages: 4 };
+    }
+  };
+
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
     }
     return 'light';
   });
+
+  const [config, setConfig] = useState(() => getResponsiveConfig(window.innerWidth));
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -20,9 +36,16 @@ function App() {
     }
   }, [theme]);
 
-  const handleThemeSwitch = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      const newConfig = getResponsiveConfig(window.innerWidth);
+      // Only update state if the config actually changes (performance boost)
+      setConfig(prev => (prev.totalPages !== newConfig.totalPages ? newConfig : prev));
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const sunIcon = (
     <svg
@@ -68,31 +91,31 @@ function App() {
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
-      <Parallax pages={4}>
+      <Parallax pages={config.totalPages}>
         <ParallaxLayer
           offset={0}
           speed={-0.2}
-          factor={4}
+          factor={config.totalPages}
           className="bg-img"
           style={{ backgroundSize: 'cover' }}
         />
 
         <ParallaxLayer
-          offset={0.17}
+          offset={config.intro}
           speed={0.05}
         >
           <Intro />
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={1.0}
+          offset={config.portfolio}
           speed={0.05}
         >
           <Portfolio />
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={2.4}
+          offset={config.timeline}
           speed={0.05}
         >
           <Timeline />
