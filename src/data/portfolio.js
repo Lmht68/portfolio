@@ -14,7 +14,7 @@ export default [
         link: 'https://thehackershideout.com',
     },
     {
-        title: 'Real-estate Price Predictor',
+        title: 'Real Estate Price Predictor',
         desc: 'A machine learning model that predicts real-estate prices based on various factors.',
         imgUrl: '/assets/real-estate.jpg',
         stack: ['PyTorch', 'NumPy', 'Pandas', 'Seaborn', 'FastAPI', 'Docker', 'Google Cloud'],
