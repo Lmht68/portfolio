@@ -31,7 +31,7 @@ export default [
         title: 'ConsoleBnB',
         desc: 'ConsoleBnB is a Java-based, console rental booking system featuring user authentication, rental listings and bookings, search filters, and user management functionalities.',
         imgUrl: '/assets/bnb.jpg',
-        stack: ['Java', 'JUnit', 'Bash', 'SDLC', 'Agile'],
+        stack: ['Java', 'JUnit', 'Bash', 'Gradle', 'SDLC', 'Agile'],
         link: 'https://github.com/Lmht68/console-bnb',
     },
     {

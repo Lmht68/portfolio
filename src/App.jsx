@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Intro from './components/Intro';
 import Portfolio from './components/Portfolio';
+import Timeline from './components/Timeline';
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -77,26 +78,25 @@ function App() {
         />
 
         <ParallaxLayer
-          offset={0.3}
+          offset={0.17}
           speed={0.05}
         >
           <Intro />
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={1}
+          offset={1.0}
           speed={0.05}
         >
           <Portfolio />
         </ParallaxLayer>
 
-        {/* <ParallaxLayer
-          offset={2}
-          speed={-0.2}
-          factor={2}
-          className="bg-img-2"
-          style={{ backgroundSize: 'cover' }}
-        /> */}
+        <ParallaxLayer
+          offset={2.4}
+          speed={0.05}
+        >
+          <Timeline />
+        </ParallaxLayer>
       </Parallax>
     </>
   )
