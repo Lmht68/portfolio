@@ -29,13 +29,13 @@ export default [
         duration: '5 years',
         stack: [],
         details:
-            'I pursued the knowledge that a computer science degree had to offer. I learned about computer architecture, computer science theory, programming principles and algorithms, and aspects of data science and artificial intelligence.',
+            'I pursued the knowledge that a computer science degree had to offer. I learned about computer architecture, computer science theory, programming principles and algorithms, and aspects of data science and machine learning.',
     },
     {
         year: '2024',
         title: 'Software Engineering Intern',
         duration: '1 and a half years',
-        stack: ['ARM', 'STM32', 'ESP32', 'Serial', 'FreeRTOS', 'Qt', 'Node-RED'],
+        stack: ['ARM', 'STM32', 'ESP32', 'Serial', 'FreeRTOS', 'Qt', 'Node-RED', 'OpenCV'],
         details:
             'I contributed to embedded firmware development and system testing for automotive applications, supporting driver development, and hardware - software integrations. This experience strengthened my skills in embedded development, automation, testing, and building practical tools that improve system reliability and engineering efficiency.',
     },
