@@ -3,19 +3,17 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --background-image-img-1: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/bg-1.jpg');
-  --background-image-img-2: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/bg-2.jpg');
+  --background-image-img: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/background.jpg');
 }
 
 @layer base {
   .dark {
-    --background-image-img-1: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/bg-1.jpg');
-    --background-image-img-2: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/bg-2.jpg');
+    --background-image-img: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/background.jpg');
   }
 }
 
 @utility content-block-bg {
-  @apply bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100
+  @apply bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-stone-100 p-8 md:p-10
 }
 
 @utility content-block-border {
