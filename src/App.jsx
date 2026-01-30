@@ -67,11 +67,11 @@ function App() {
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
-      <Parallax pages={2}>
+      <Parallax pages={3}>
         <ParallaxLayer
           offset={0}
           speed={-0.2}
-          factor={2}
+          factor={3}
           className="bg-img-1"
           style={{ backgroundSize: 'cover' }}
         />
