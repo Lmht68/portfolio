@@ -3,12 +3,12 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --background-image-img: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('assets/background.jpg');
+  --background-image-img: url('assets/background.jpg');
 }
 
 @layer base {
   .dark {
-    --background-image-img: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/background.jpg');
+    --background-image-img: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/background.jpg');
   }
 }
 
