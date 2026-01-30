@@ -77,14 +77,14 @@ function App() {
         />
 
         <ParallaxLayer
-          offset={0.05}
+          offset={0.25}
           speed={0.05}
         >
           <Intro />
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={0.70}
+          offset={1.10}
           speed={0.05}
         >
           <Portfolio />
