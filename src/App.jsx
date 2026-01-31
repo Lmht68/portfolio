@@ -3,6 +3,7 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import Intro from './components/Intro';
 import Portfolio from './components/Portfolio';
 import Timeline from './components/Timeline';
+import Skills from './components/Skills';
 
 function App() {
   const handleThemeSwitch = () => {
@@ -11,11 +12,11 @@ function App() {
 
   const getResponsiveConfig = (width) => {
     if (width < 640) { // Mobile
-      return { intro: 0.17, portfolio: 1.0, timeline: 3.5, totalPages: 5 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 3.5, skills: 5.85, totalPages: 7 };
     } else if (width < 1024) { // Tablet
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, totalPages: 4 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, skills: 3.95, totalPages: 5 };
     } else { // Desktop
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, totalPages: 4 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, skills: 3.95, totalPages: 5 };
     }
   };
 
@@ -119,6 +120,13 @@ function App() {
           speed={0.05}
         >
           <Timeline />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={config.skills}
+          speed={0.05}
+        >
+          <Skills />
         </ParallaxLayer>
       </Parallax>
     </>
