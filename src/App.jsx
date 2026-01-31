@@ -12,11 +12,11 @@ function App() {
 
   const getResponsiveConfig = (width) => {
     if (width < 640) { // Mobile
-      return { intro: 0.17, portfolio: 1.0, timeline: 3.5, skills: 5.85, totalPages: 7 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.65, totalPages: 7 };
     } else if (width < 1024) { // Tablet
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, skills: 3.95, totalPages: 5 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.2, skills: 3.57, totalPages: 5 };
     } else { // Desktop
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.4, skills: 3.95, totalPages: 5 };
+      return { intro: 0.17, portfolio: 1.0, timeline: 2.2, skills: 3.57, totalPages: 5 };
     }
   };
 
