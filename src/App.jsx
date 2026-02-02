@@ -4,6 +4,7 @@ import Intro from './components/Intro';
 import Portfolio from './components/Portfolio';
 import Timeline from './components/Timeline';
 import Skills from './components/Skills';
+import Footer from './components/Footer';
 
 function App() {
   const [theme, toggleTheme] = useTheme();
@@ -90,10 +91,18 @@ function App() {
         >
           <Skills />
         </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={config.totalPages - 0.1}
+          speed={0.05}
+        >
+          <Footer />
+        </ParallaxLayer>
       </Parallax>
     </>
   )
 }
+
 export default App
 
 function useTheme() {
