@@ -6,47 +6,9 @@ import Timeline from './components/Timeline';
 import Skills from './components/Skills';
 
 function App() {
-  const handleThemeSwitch = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const getResponsiveConfig = (width) => {
-    if (width < 640) { // Mobile
-      return { intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.65, totalPages: 7 };
-    } else if (width < 1024) { // Tablet
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.2, skills: 3.57, totalPages: 5 };
-    } else { // Desktop
-      return { intro: 0.17, portfolio: 1.0, timeline: 2.2, skills: 3.57, totalPages: 5 };
-    }
-  };
-
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  });
-
-  const [config, setConfig] = useState(() => getResponsiveConfig(window.innerWidth));
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const newConfig = getResponsiveConfig(window.innerWidth);
-      // Only update state if the config actually changes (performance boost)
-      setConfig(prev => (prev.totalPages !== newConfig.totalPages ? newConfig : prev));
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const [theme, toggleTheme] = useTheme();
+  const [width, height] = useWindowSize();
+  const config = getResponsiveConfig(width, height);
 
   const sunIcon = (
     <svg
@@ -86,13 +48,13 @@ function App() {
     <>
       <button
         type="button"
-        onClick={handleThemeSwitch}
+        onClick={toggleTheme}
         className="fixed p-2 z-10 right-4 md:right-20 top-4 bg-violet-300 dark:bg-orange-300 text-lg rounded-md"
       >
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
-      <Parallax pages={config.totalPages}>
+      <Parallax key={config.key} pages={config.totalPages}>
         <ParallaxLayer
           offset={0}
           speed={-0.2}
@@ -132,5 +94,67 @@ function App() {
     </>
   )
 }
-
 export default App
+
+function useTheme() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Function to sync both state and the DOM class
+    const handleChange = () => {
+      const isDark = mediaQuery.matches;
+      setTheme(isDark ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', isDark);
+    };
+
+    // Initial sync
+    handleChange();
+
+    // Listen for system changes
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      return next;
+    });
+  };
+
+  return [theme, toggleTheme];
+}
+
+function useWindowSize() {
+  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+  useEffect(() => {
+    const handleResize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return size;
+};
+
+function getResponsiveConfig(width, height) {
+  if (width < 640) { // Mobile
+    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.64, totalPages: 7 };
+  }
+
+  if (width >= 640 && width <= 1024) { // Tablet
+    return { key: "tablet", intro: 0.1, portfolio: 0.6, timeline: 1.3, skills: 2.53, totalPages: 5 };
+  }
+
+  if (height > width) { // Portrait
+    return { key: "portrait", intro: 0.085, portfolio: 0.5, timeline: 1.065, skills: 2.01, totalPages: 5 };
+  }
+
+  // Landscape
+  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, totalPages: 5 };
+}
