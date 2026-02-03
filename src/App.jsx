@@ -5,6 +5,7 @@ import Portfolio from './components/Portfolio';
 import Timeline from './components/Timeline';
 import Skills from './components/Skills';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 
 function App() {
   const [theme, toggleTheme] = useTheme();
@@ -93,6 +94,13 @@ function App() {
         </ParallaxLayer>
 
         <ParallaxLayer
+          offset={config.contact}
+          speed={0.05}
+        >
+          <Contact />
+        </ParallaxLayer>
+
+        <ParallaxLayer
           offset={config.totalPages - 0.1}
           speed={0.05}
         >
@@ -153,17 +161,17 @@ function useWindowSize() {
 
 function getResponsiveConfig(width, height) {
   if (width < 640) { // Mobile
-    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.64, totalPages: 7 };
+    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.64, contact: 5.9, totalPages: 6.6 };
   }
 
   if (width >= 640 && width <= 1024) { // Tablet
-    return { key: "tablet", intro: 0.1, portfolio: 0.6, timeline: 1.3, skills: 2.53, totalPages: 5 };
+    return { key: "tablet", intro: 0.1, portfolio: 0.6, timeline: 1.3, skills: 2.53, contact: 2.85, totalPages: 3.4 };
   }
 
   if (height > width) { // Portrait
-    return { key: "portrait", intro: 0.085, portfolio: 0.5, timeline: 1.065, skills: 2.01, totalPages: 5 };
+    return { key: "portrait", intro: 0.085, portfolio: 0.5, timeline: 1.035, skills: 1.9999, contact: 2.15, totalPages: 2.65 };
   }
 
   // Landscape
-  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, totalPages: 5 };
+  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, contact: 4.05, totalPages: 4.85 };
 }
