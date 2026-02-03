@@ -10,7 +10,7 @@ export default [
         title: 'Developer Portfolio',
         desc: 'A modern portfolio landing page with a minimal, intuitive design.',
         imgUrl: '/assets/portfolio.jpg',
-        stack: ['React', 'Tailwind', 'Vite'],
+        stack: ['React', 'Tailwind', 'Vite', 'Netlify'],
         link: 'https://thehackershideout.com',
     },
     {
