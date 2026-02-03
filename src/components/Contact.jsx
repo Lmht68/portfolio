@@ -1,4 +1,30 @@
+import { useState } from 'react';
+
 function Contact() {
+    // State to track if the form was submitted successfully
+    const [formStatus, setFormStatus] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const myForm = e.target;
+        const formData = new FormData(myForm);
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => {
+                setFormStatus("SUCCESS");
+                myForm.reset();
+                setTimeout(() => setFormStatus(""), 3000);
+            })
+            .catch((error) => {
+                setFormStatus("ERROR");
+                setTimeout(() => setFormStatus(""), 3000);
+            });
+    };
+
     return (
         <div className="flex flex-col mb-10 mx-auto">
             <div className="flex justify-center items-center p-5 md:p-10 content-block-bg">
@@ -6,6 +32,7 @@ function Contact() {
                     name="contact"
                     method="POST"
                     data-netlify="true"
+                    onSubmit={handleSubmit}
                     className="flex flex-col w-full md:w-7/12"
                 >
                     {/* hidden input for Netlify bot discovery */}
@@ -14,21 +41,37 @@ function Contact() {
                     <input
                         type="text"
                         name="name"
+                        required
                         placeholder="Name"
                         className="p-2 bg-transparent border-2 rounded-md focus:outline-none"
                     />
                     <input
                         type="text"
                         name="email"
+                        required
                         placeholder="Email"
                         className="my-2 p-2 bg-transparent border-2 rounded-md focus:outline-none"
                     />
                     <textarea
+                        required
                         name="message"
                         placeholder="Message"
                         rows="10"
                         className="p-2 mb-4 bg-transparent border-2 rounded-md focus:outline-none"
                     />
+                    {/* Status Message Area - Fixed height prevents shrinking */}
+                    <div className="h-6 mb-2 flex items-center">
+                        {formStatus === "SUCCESS" && (
+                            <span className="text-green-500 font-medium">
+                                Thank you for reaching out! Talk to you soon.
+                            </span>
+                        )}
+                        {formStatus === "ERROR" && (
+                            <span className="text-red-500 font-medium">
+                                Oops! Something went wrong.
+                            </span>
+                        )}
+                    </div>
                     <button
                         type="submit"
                         className="text-center inline-block px-8 py-3 w-max text-base font-medium rounded-md text-white 
