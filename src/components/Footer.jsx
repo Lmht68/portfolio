@@ -7,6 +7,7 @@ function Footer() {
                         <a
                             href="https://github.com/Lmht68"
                             className="bg-stone-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+                            <span className="sr-only">GitHub profile</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -29,6 +30,7 @@ function Footer() {
                         <a
                             href="https://www.linkedin.com/in/thinhle68"
                             className="bg-stone-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+                            <span className="sr-only">LinkedIn profile</span>
                             <svg
                                 className="w-5 h-5 fill-current"
                                 role="img"
@@ -43,6 +45,7 @@ function Footer() {
                         <a
                             href="https://x.com/lmht68"
                             className="bg-stone-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded-full">
+                            <span className="sr-only">X profile</span>
                             <svg
                                 className="w-5 h-5 fill-current"
                                 role="img"

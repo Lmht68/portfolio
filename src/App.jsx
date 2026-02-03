@@ -53,6 +53,7 @@ function App() {
         onClick={toggleTheme}
         className="fixed p-2 z-10 right-4 md:right-20 top-4 bg-violet-300 dark:bg-orange-300 text-lg rounded-md"
       >
+        <span className="sr-only">Toggle dark mode</span>
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
