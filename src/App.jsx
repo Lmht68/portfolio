@@ -217,5 +217,5 @@ function getResponsiveConfig(width, height) {
   }
 
   // Landscape
-  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, contact: 4.05, totalPages: 4.85 };
+  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, contact: 4, totalPages: 4.85 };
 }
