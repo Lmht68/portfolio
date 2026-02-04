@@ -205,7 +205,7 @@ function useWindowSize() {
 
 function getResponsiveConfig(width, height) {
   if (width < 640) { // Mobile
-    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.4, skills: 5.56, contact: 5.76, totalPages: 6.5 };
+    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.52, skills: 6.12, contact: 6.3, totalPages: 7.1 };
   }
 
   if (width >= 640 && width <= 1024) { // Tablet
