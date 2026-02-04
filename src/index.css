@@ -23,3 +23,7 @@
 @utility text-title {
   @apply text-violet-600 dark:text-orange-300
 }
+
+@utility icon-btn {
+  @apply p-2 bg-violet-300 dark:bg-orange-300 text-lg text-white dark:text-stone-900 rounded-md transition-colors duration-300
+}
