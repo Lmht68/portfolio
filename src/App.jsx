@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { useEffect, useState } from 'react';
 import Intro from './components/Intro';
 import Portfolio from './components/Portfolio';
 import Timeline from './components/Timeline';
@@ -44,114 +43,42 @@ const moonIcon = (
 
 function App() {
   const [theme, toggleTheme] = useTheme();
-  const [width, height] = useWindowSize();
-  const config = getResponsiveConfig(width, height);
-  const parallaxRef = useRef(null);
-  const [activeSection, setActiveSection] = useState("intro");
-
-  const scrollToSection = (id) => {
-    const offset = config[id];
-    if (offset !== undefined) {
-      parallaxRef.current?.scrollTo(offset - 0.1);
-    }
-  };
-
-  useEffect(() => {
-    if (!parallaxRef.current) return;
-
-    const container = parallaxRef.current.container.current;
-
-    const sections = [
-      { id: "intro", offset: config.intro },
-      { id: "portfolio", offset: config.portfolio },
-      { id: "timeline", offset: config.timeline },
-      { id: "skills", offset: config.skills },
-      { id: "contact", offset: config.contact },
-    ];
-
-    const onScroll = () => {
-      const currentPage =
-        parallaxRef.current.current / parallaxRef.current.space;
-
-      const closest = sections.reduce((prev, curr) =>
-        Math.abs(curr.offset - currentPage) <
-          Math.abs(prev.offset - currentPage)
-          ? curr
-          : prev
-      );
-
-      setActiveSection(closest.id);
-    };
-
-    container.addEventListener("scroll", onScroll);
-    return () => container.removeEventListener("scroll", onScroll);
-  }, [config]);
 
   return (
-    <>
+    <div className="antialiased transition-colors duration-300">
       <button
         type="button"
         onClick={toggleTheme}
-        className="fixed z-10 left-4 md:left-10 top-4 icon-btn"
+        className="fixed z-10 left-4 md:left-12 top-4 icon-btn"
       >
         <span className="sr-only">Toggle dark mode</span>
         {theme === 'dark' ? sunIcon : moonIcon}
       </button>
 
-      <Navbar active={activeSection} scrollToSection={scrollToSection} />
+      <Navbar />
 
-      <Parallax key={config.key} pages={config.totalPages} ref={parallaxRef}>
-        <ParallaxLayer
-          offset={0}
-          speed={-0.2}
-          factor={config.totalPages}
-          className="bg-img"
-          style={{ backgroundSize: 'cover' }}
-        />
+      <div className="fixed inset-0 -z-10 bg-img bg-cover bg-center" />
 
-        <ParallaxLayer
-          offset={config.intro}
-          speed={0.05}
-        >
+      <main className="flex flex-col items-center">
+        <section id="intro" className="py-24 w-full">
           <Intro />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={config.portfolio}
-          speed={0.05}
-        >
+        </section>
+        <section id="portfolio" className="py-5 w-full">
           <Portfolio />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={config.timeline}
-          speed={0.05}
-        >
+        </section>
+        <section id="timeline" className="py-5 w-full">
           <Timeline />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={config.skills}
-          speed={0.05}
-        >
+        </section>
+        <section id="skills" className="py-5 w-full">
           <Skills />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={config.contact}
-          speed={0.05}
-        >
+        </section>
+        <section id="contact" className="py-5 w-full">
           <Contact />
-        </ParallaxLayer>
+        </section>
+      </main>
 
-        <ParallaxLayer
-          offset={config.totalPages - 0.12}
-          speed={0.05}
-        >
-          <Footer />
-        </ParallaxLayer>
-      </Parallax>
-    </>
+      <Footer />
+    </div >
   )
 }
 
@@ -187,35 +114,4 @@ function useTheme() {
   };
 
   return [theme, toggleTheme];
-}
-
-function useWindowSize() {
-  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
-  useEffect(() => {
-    const handleResize = () => {
-      setSize([window.innerWidth, window.innerHeight]);
-    };
-
-    window.addEventListener('resize', handleResize);
-    // Cleanup the event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  return size;
-};
-
-function getResponsiveConfig(width, height) {
-  if (width < 640) { // Mobile
-    return { key: "mobile", intro: 0.17, portfolio: 1.0, timeline: 3.52, skills: 6.12, contact: 6.3, totalPages: 7.1 };
-  }
-
-  if (width >= 640 && width <= 1024) { // Tablet
-    return { key: "tablet", intro: 0.1, portfolio: 0.6, timeline: 1.3, skills: 2.53, contact: 2.85, totalPages: 3.4 };
-  }
-
-  if (height > width) { // Portrait
-    return { key: "portrait", intro: 0.085, portfolio: 0.5, timeline: 1.035, skills: 1.9999, contact: 2.15, totalPages: 2.65 };
-  }
-
-  // Landscape
-  return { key: "landscape", intro: 0.17, portfolio: 1.0, timeline: 2.23, skills: 3.63, contact: 4, totalPages: 4.85 };
 }

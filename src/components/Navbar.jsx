@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
     { id: "intro", title: "Intro" },
@@ -42,8 +42,43 @@ const closeIcon = (
     </svg>
 );
 
-function Navbar({ active, scrollToSection }) {
+function Navbar() {
+    const [active, setActive] = useState("intro");
     const [toggle, setToggle] = useState(false);
+
+    useEffect(() => {
+        const sectionIds = navLinks.map(link => link.id);
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            },
+            {
+                rootMargin: '-20% 0% -70% 0%',
+                threshold: 0
+            }
+        );
+
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        // Cleanup
+        return () => observer.disconnect();
+    }, []);
+
+    const handleNavClick = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setToggle(false);
+    };
 
     return (
         <nav className="fixed z-10 right-4 md:right-12 top-4 w-full flex justify-end pointer-events-none">
@@ -66,11 +101,7 @@ function Navbar({ active, scrollToSection }) {
                         {navLinks.map((nav) => (
                             <li key={nav.id}>
                                 <button
-                                    onClick={() => {
-                                        scrollToSection(nav.id);
-                                        setActive(nav.id);
-                                        setToggle(false);
-                                    }}
+                                    onClick={() => { handleNavClick(nav.id); }}
                                     className={`text-left w-full text-[16px] font-medium transition-colors duration-200
                                                 ${active === nav.id ? "text-violet-600 dark:text-orange-300" : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"}
                                             `}
