@@ -17,8 +17,8 @@ export default [
     },
     {
         year: '2025',
-        title: 'Software Engineering (Contract)',
-        duration: '1 year',
+        title: 'Software Engineering Intern (Contract)',
+        duration: '1 year & 1 month',
         stack: ['ARM', 'Serial', 'AUTOSAR', 'Qt', 'Flask', 'SQLite', 'OpenCV', 'NumPy', 'Pandas'],
         details:
             'I built end-to-end software solutions for enterprise automotive clients, delivering embedded drivers, automation tools, and system testing pipelines that complied with strict automotive safety regulations and industry standards. I collaborated closely with cross-functional teams to ensure seamless integration and deployment of software and hardware components.',
@@ -33,8 +33,8 @@ export default [
     },
     {
         year: '2024',
-        title: 'Software Engineering Intern',
-        duration: '1 and a half years',
+        title: 'Software Engineering Co-op',
+        duration: '1 year & 4 months',
         stack: ['ARM', 'STM32', 'ESP32', 'Serial', 'FreeRTOS', 'Qt', 'Node-RED', 'OpenCV'],
         details:
             'I contributed to embedded firmware development and system testing for automotive applications, supporting driver development, and hardware - software integrations. This experience strengthened my skills in embedded development, automation, testing, and building practical tools that improve system reliability and engineering efficiency.',
