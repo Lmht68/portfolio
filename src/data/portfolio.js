@@ -2,7 +2,7 @@ export default [
     {
         title: 'CineBar',
         desc: 'A palette generator tool that extracts and visualizes dominant colors as barcodes.',
-        imgUrl: 'assets/cinebar.jpg',
+        imgUrl: '/assets/cinebar.jpg',
         stack: ['Qt', 'OpenCV', 'CMake'],
         link: 'https://github.com/Lmht68/cinebar',
     },
@@ -11,7 +11,7 @@ export default [
         desc: 'A modern portfolio landing page with a minimal, intuitive design.',
         imgUrl: '/assets/portfolio.jpg',
         stack: ['React', 'Tailwind', 'Vite', 'Netlify'],
-        link: 'https://thehackershideout.com',
+        link: 'https://github.com/Lmht68/portfolio',
     },
     {
         title: 'Real Estate Price Predictor',

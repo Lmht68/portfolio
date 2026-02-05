@@ -17,7 +17,7 @@ export default [
     },
     {
         year: '2025',
-        title: 'Software Engineering Contractor',
+        title: 'Software Engineering (Contract)',
         duration: '1 year',
         stack: ['ARM', 'Serial', 'AUTOSAR', 'Qt', 'Flask', 'SQLite', 'OpenCV', 'NumPy', 'Pandas'],
         details:

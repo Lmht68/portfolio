@@ -61,7 +61,7 @@ function App() {
       <div className="fixed inset-0 -z-10 bg-img bg-cover bg-center" />
 
       <main className="flex flex-col items-center">
-        <section id="intro" className="py-24 w-full">
+        <section id="intro" className="py-36 w-full">
           <Intro />
         </section>
         <section id="portfolio" className="py-5 w-full">

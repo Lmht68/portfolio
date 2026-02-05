@@ -58,7 +58,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <p className="text-sm mt-2  opacity-50">
+            <p className="text-sm mt-2 opacity-70">
                 &copy; {new Date().getFullYear()} Thinh Le. All rights reserved.
             </p>
         </div>
