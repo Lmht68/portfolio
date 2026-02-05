@@ -4,7 +4,7 @@ function PortfolioItem({ title, desc, imgUrl, stack, link }) {
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="overflow-hidden flex flex-col justify-between content-block-border"
+            className="h-full overflow-hidden flex flex-col justify-between content-block-border"
         >
             <img
                 src={imgUrl}

@@ -2,12 +2,12 @@ import testimonials from "../data/testimonials";
 
 function Testimonials() {
     return (
-        <div className="max-w-6xl mx-auto px-5">
-            <div className="grid gap-2 md:grid-cols-2">
+        <div className="max-w-6xl mx-auto">
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 md:px-9 scroll-pl-5 md:scroll-pl-8 md:grid md:grid-cols-2">
                 {testimonials.map((item, index) => (
                     <div
                         key={index}
-                        className="p-5 rounded-xl border border-violet-600 dark:border-orange-300 
+                        className="min-w-full snap-center p-5 rounded-xl border border-violet-600 dark:border-orange-300 
                         bg-stone-200/70 dark:bg-stone-800/70 backdrop-blur flex flex-col"
                     >
                         <p className="text-stone-800 dark:text-stone-200 mb-6 leading-relaxed">
@@ -37,7 +37,7 @@ function Testimonials() {
                                     href={item.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-xs text-stone-700 dark:text-stone-400  hover:text-violet-600 dark:hover:text-orange-300 transition-colors"
+                                    className="text-xs text-stone-700 dark:text-stone-400 hover:text-violet-600 dark:hover:text-orange-300 transition-colors"
                                 >
                                     View more ↗
                                 </a>
