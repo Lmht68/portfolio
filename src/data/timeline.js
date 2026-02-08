@@ -2,7 +2,7 @@ export default [
     {
         year: 'Today',
         title: 'Solo Indie Developer',
-        duration: '7 months',
+        duration: 'Sep 2025',
         stack: [],
         details:
             "I'm a solo indie developer building software for myself and clients. All coding projects are built from the ground up, from planning and designing all the way to solving real-life problems with code.",
@@ -10,7 +10,7 @@ export default [
     {
         year: 'Today',
         title: 'Barista',
-        duration: '5 months',
+        duration: 'Sep 2025',
         stack: [],
         details:
             'I provided friendly customer service and quality beverages while collaborating with team members, and maintaining a organized workflow in a fast-paced environment.',
@@ -43,7 +43,7 @@ export default [
         year: '2022',
         title: 'Teaching Assistant',
         duration: '4 months',
-        stack: ['Java', 'Gradle'],
+        stack: ['Python', 'Java', 'Gradle', 'C++', 'GDB', 'Git'],
         details:
             'I assisted professors in grading assignments, leading lab sessions, and providing support to students in data structures and algorithms programming courses. This experience helped me solidify my understanding of programming concepts while also developing my communication skills.',
     },
