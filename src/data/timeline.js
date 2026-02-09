@@ -2,7 +2,7 @@ export default [
     {
         year: 'Today',
         title: 'Solo Indie Developer',
-        duration: 'Sep 2025',
+        duration: '2025-09-01',
         stack: [],
         details:
             "I'm a solo indie developer building software for myself and clients. All coding projects are built from the ground up, from planning and designing all the way to solving real-life problems with code.",
@@ -10,7 +10,7 @@ export default [
     {
         year: 'Today',
         title: 'Barista',
-        duration: 'Sep 2025',
+        duration: '2025-09-01',
         stack: [],
         details:
             'I provided friendly customer service and quality beverages while collaborating with team members, and maintaining a organized workflow in a fast-paced environment.',
