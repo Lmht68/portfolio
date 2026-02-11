@@ -18,7 +18,7 @@ export default [
     {
         year: '2025',
         title: 'Software Engineering Intern (Contract)',
-        duration: '1 year & 1 month',
+        duration: '1 year',
         stack: ['ARM', 'Serial', 'AUTOSAR', 'Qt', 'Flask', 'SQLite', 'OpenCV', 'NumPy', 'Pandas'],
         details:
             'I built end-to-end software solutions for enterprise automotive clients, delivering embedded drivers, automation tools, and system testing pipelines that complied with strict automotive safety regulations and industry standards. I collaborated closely with cross-functional teams to ensure seamless integration and deployment of software and hardware components.',
@@ -26,7 +26,7 @@ export default [
     {
         year: '2025',
         title: "Bachelor's Degree in Computer Science",
-        duration: '5 years',
+        duration: '4 years',
         stack: [],
         details:
             'I pursued the knowledge that a computer science degree had to offer. I learned about computer architecture, computer science theory, programming principles and algorithms, and aspects of data science and machine learning.',
